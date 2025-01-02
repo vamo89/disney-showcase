@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        disneyTheme: '#054553',
+        primary: '#054553',
       },
     },
   },
