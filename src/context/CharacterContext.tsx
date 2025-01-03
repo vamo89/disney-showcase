@@ -25,13 +25,15 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
   undefined,
 );
 
+interface CharacterProviderProps {
+  children: ReactNode;
+  featuredCharacters?: boolean;
+}
+
 export const CharacterProvider = ({
   children,
   featuredCharacters,
-}: {
-  children: ReactNode;
-  featuredCharacters?: boolean;
-}) => {
+}: CharacterProviderProps) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [searchCaracters, setSearchCaracters] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -72,10 +74,14 @@ export const CharacterProvider = ({
         const response = await getCharacters(1);
         if (featuredCharacters) {
           setCharacters(
-            response.data.filter((character) => character.films.length > 1),
+            Array.isArray(response.data)
+              ? response.data.filter((character) => character.films.length > 1)
+              : [response.data],
           );
         } else {
-          setCharacters(response.data);
+          setCharacters(
+            Array.isArray(response.data) ? response.data : [response.data],
+          );
         }
       } catch (error) {
         setError('Failed to load characters');

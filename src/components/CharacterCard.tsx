@@ -52,7 +52,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
         )}
 
         <Link
-          href={`/characters/${character._id}`}
+          href={`/character/${character._id}`}
           className="mt-auto pb-4 block text-center text-sm font-medium text-black underline hover:text-black/80 capitalize"
           aria-label={`View ${character.name}'s profile`}
         >

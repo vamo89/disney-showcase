@@ -7,7 +7,7 @@ interface ApiResponse {
     previousPage: string | null;
     nextPage: string | null;
   };
-  data: Character[];
+  data: Character[] | Character;
 }
 
 const BASE_URL = 'https://api.disneyapi.dev';
@@ -53,8 +53,7 @@ export const getCharactersByName = async (
   }
 };
 
-// Optional: Add a function to get a single character by ID
-export const getCharacterById = async (id: number): Promise<Character> => {
+export const getCharacterById = async (id: number): Promise<ApiResponse> => {
   try {
     const response = await fetch(`${BASE_URL}/character/${id}`);
 
@@ -62,7 +61,7 @@ export const getCharacterById = async (id: number): Promise<Character> => {
       throw new Error('Failed to fetch character');
     }
 
-    const data = await response.json();
+    const data: ApiResponse = await response.json();
     return data;
   } catch (error) {
     console.error('Error fetching character:', error);
