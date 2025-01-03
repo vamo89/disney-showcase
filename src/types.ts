@@ -2,7 +2,7 @@
 export interface Character {
   _id: number;
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
   films: string[];
   shortFilms: string[];
   tvShows: string[];

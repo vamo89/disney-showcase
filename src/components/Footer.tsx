@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import DisneyLogo from '@/logo.png';
+import DisneyLogo from '@/images/logo.png';
 
 const Footer = () => {
   return (

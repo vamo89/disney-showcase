@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import DisneyLogo from '@/logo.png';
-import Profile from '@/avatar.png';
+import DisneyLogo from '@/images/logo.png';
+import Profile from '@/images/avatar.png';
 import Search from './Search';
 
 const Header = () => {
@@ -16,13 +16,7 @@ const Header = () => {
               aria-label="Go to homepage"
               tabIndex={0}
             >
-              <Image
-                src={DisneyLogo}
-                alt="Disney Logo"
-                width={100}
-                height={40}
-                priority
-              />
+              <Image src={DisneyLogo} alt="Disney Logo" height={40} priority />
             </Link>
           </div>
           <Search />
