@@ -31,6 +31,8 @@ export const Default: Story = {
           characters: mockCharacterList,
           isLoading: false,
           error: null,
+          searchQuery: '',
+          setSearchQuery: () => {},
         }}
       >
         <Story />
@@ -48,6 +50,8 @@ export const Loading: Story = {
           characters: [],
           isLoading: true,
           error: null,
+          searchQuery: '',
+          setSearchQuery: () => {},
         }}
       >
         <Story />
@@ -65,6 +69,8 @@ export const Error: Story = {
           characters: [],
           isLoading: false,
           error: 'Failed to load characters',
+          searchQuery: '',
+          setSearchQuery: () => {},
         }}
       >
         <Story />
@@ -82,6 +88,8 @@ export const Empty: Story = {
           characters: [],
           isLoading: false,
           error: null,
+          searchQuery: '',
+          setSearchQuery: () => {},
         }}
       >
         <Story />
