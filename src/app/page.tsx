@@ -4,7 +4,7 @@ import FeaturedCharacters from '@/components/FeaturedCharacters';
 
 export default function Home() {
   return (
-    <main>
+    <main className="max-w-7xl bg-gray-100 mx-10">
       <CharacterProvider>
         <CharacterList />
       </CharacterProvider>
