@@ -4,7 +4,11 @@ import DisneyLogo from '@/images/logo.png';
 import Profile from '@/images/avatar.png';
 import Search from './Search';
 
-const Header = () => {
+interface HeaderProps {
+  withSearch?: boolean;
+}
+
+const Header = ({ withSearch = false }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +23,7 @@ const Header = () => {
               <Image src={DisneyLogo} alt="Disney Logo" height={40} priority />
             </Link>
           </div>
-          <Search />
+          {withSearch && <Search />}
 
           <Image src={Profile} alt="Profile" width={40} height={40} priority />
         </div>

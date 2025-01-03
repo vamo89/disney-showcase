@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main className="max-w-7xl bg-gray-100 mx-10">
       <CharacterProvider>
-        <Header />
+        <Header withSearch />
         <CharacterList />
       </CharacterProvider>
       <CharacterProvider featuredCharacters>

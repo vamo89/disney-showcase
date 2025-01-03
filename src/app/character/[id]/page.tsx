@@ -7,6 +7,7 @@ import {
   SingleCharacterProvider,
   useSingleCharacter,
 } from '@/context/SingleCharacterContext';
+import Header from '@/components/Header';
 
 const CharacterContent = () => {
   const params = useParams<{ id: string }>();
@@ -36,9 +37,12 @@ const CharacterContent = () => {
 };
 
 const CharacterPage = () => (
-  <SingleCharacterProvider>
-    <CharacterContent />
-  </SingleCharacterProvider>
+  <>
+    <Header />
+    <SingleCharacterProvider>
+      <CharacterContent />
+    </SingleCharacterProvider>
+  </>
 );
 
 export default CharacterPage;
