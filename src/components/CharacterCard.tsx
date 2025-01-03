@@ -2,24 +2,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { type Character } from '@/types';
 import missingImage from '@/images/missing-image.png';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 interface CharacterCardProps {
   character: Character;
 }
 
 const CharacterCard = ({ character }: CharacterCardProps) => {
-  const imageUrl = character.imageUrl || missingImage;
+  const [error, setError] = useState(false);
+  const imageSrc = character.imageUrl || missingImage;
+
+  useEffect(() => {
+    setError(false);
+  }, [imageSrc]);
 
   return (
     <div className="w-full max-w-[250px] h-[400px] overflow-hidden rounded-lg shadow-lg">
       <div className="relative h-[250px] w-[250px]">
         <Image
-          src={imageUrl}
+          src={error ? missingImage : imageSrc}
           alt={`Photo of ${character.name}`}
           fill
           sizes="250px"
           className="object-cover object-top"
           priority
+          onError={() => setError(true)}
         />
       </div>
 
