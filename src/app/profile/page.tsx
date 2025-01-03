@@ -58,7 +58,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <main className="bg-gray-50 py-12">
+    <main className="bg-gray-50">
       <Header />
       <div className="container mx-auto px-4 mt-12">
         <UserProfile profile={profile} onUpdate={handleUpdateProfile} />
