@@ -11,6 +11,11 @@ A small Next.js + TypeScript + Tailwind app showcasing Disney characters. This i
    yarn dev
 4. Open http://localhost:3000
 
+or you can check it live on https://disney-showcase.vercel.app/
+
+There's also a storybook you can check components with the command:
+yarn storybook
+
 ## Project Structure
 
 - src/ # Source folder
