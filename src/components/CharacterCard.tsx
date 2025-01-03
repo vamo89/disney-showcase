@@ -1,17 +1,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { type Character } from '@/types';
+import missingImage from '@/images/missing-image.png';
 
 interface CharacterCardProps {
   character: Character;
 }
 
 const CharacterCard = ({ character }: CharacterCardProps) => {
+  const imageUrl = character.imageUrl || missingImage;
+
   return (
-    <div className="w-full max-w-[250px] overflow-hidden rounded-lg shadow-lg">
+    <div className="w-full max-w-[250px] h-[400px] overflow-hidden rounded-lg shadow-lg">
       <div className="relative h-[250px] w-[250px]">
         <Image
-          src={character.imageUrl}
+          src={imageUrl}
           alt={`Photo of ${character.name}`}
           fill
           sizes="250px"
@@ -20,20 +23,20 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
         />
       </div>
 
-      <div className="flex flex-col gap-2 items-center bg-white p-4">
-        <h3 className="text-xl font-bold text-gray-900">{character.name}</h3>
+      <div className="flex flex-col gap-2 items-center bg-white p-4 h-[165px]">
+        <h3 className="text-base font-bold text-gray-900 line-clamp-1 text-center">
+          {character.name}
+        </h3>
 
         {character.films.length > 0 ? (
-          <div>
-            <span className="flex flex-col text-lg font-medium items-center">
-              Featured Films
-            </span>
-            <div className="text-sm line-clamp-2 text-ellipsis text-gray-600">
+          <div className="flex flex-col items-center">
+            <span className="text-sm font-medium">Featured Films</span>
+            <div className="text-xs line-clamp-2 text-center text-gray-600">
               {character.films.join(', ')}
             </div>
           </div>
         ) : (
-          <div>
+          <div className="text-center">
             <span className="text-sm text-gray-600">
               No Films, but check they profile page for more information
             </span>
@@ -42,7 +45,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
 
         <Link
           href={`/characters/${character._id}`}
-          className="mt-2 block text-center text-sm font-medium text-black underline hover:text-black/80"
+          className="mt-auto pb-4 block text-center text-sm font-medium text-black underline hover:text-black/80 capitalize"
           aria-label={`View ${character.name}'s profile`}
         >
           View Profile
