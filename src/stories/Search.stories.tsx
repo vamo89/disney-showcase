@@ -22,6 +22,7 @@ const meta: Meta<typeof Search> = {
             setSearchQuery,
             isLoading: false,
             error: null,
+            maxCharacters: 8,
           }}
         >
           <Story />

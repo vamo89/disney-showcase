@@ -66,4 +66,26 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   );
 };
 
+export const CharacterCardSkeleton = () => {
+  return (
+    <div className="w-[250] min-w-[200px] rounded-lg bg-white shadow-md p-4 animate-pulse">
+      {/* Image skeleton */}
+      <div className="w-full h-48 bg-gray-200 rounded-lg mb-4" />
+
+      <div className="flex flex-col gap-2 items-center">
+        {/* Title skeleton */}
+        <div className="h-6 bg-gray-200 rounded w-3/4 mb-2" />
+
+        {/* Description skeleton */}
+        <div className="h-4 bg-gray-200 rounded w-2/6" />
+        <div className="h-4 bg-gray-200 rounded w-full" />
+        <div className="h-4 bg-gray-200 rounded w-full" />
+
+        {/* Button skeleton */}
+        <div className="mt-4 h-4 w-3/6 bg-gray-200 rounded" />
+      </div>
+    </div>
+  );
+};
+
 export default CharacterCard;

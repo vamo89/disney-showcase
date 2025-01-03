@@ -19,6 +19,7 @@ interface CharacterContextType {
   error: string | null;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  maxCharacters: number;
 }
 
 export const CharacterContext = createContext<CharacterContextType | undefined>(
@@ -107,6 +108,9 @@ export const CharacterProvider = ({
         error,
         searchQuery,
         setSearchQuery,
+        maxCharacters: featuredCharacters
+          ? MAX_FEATURED_CHARACTERS
+          : MAX_CHARACTERS,
       }}
     >
       {children}

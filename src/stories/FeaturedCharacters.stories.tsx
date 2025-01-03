@@ -32,6 +32,7 @@ export const Default: Story = {
           error: null,
           searchQuery: '',
           setSearchQuery: () => {},
+          maxCharacters: 4,
         }}
       >
         <Story />
@@ -50,6 +51,7 @@ export const Loading: Story = {
           error: null,
           searchQuery: '',
           setSearchQuery: () => {},
+          maxCharacters: 4,
         }}
       >
         <Story />
@@ -68,6 +70,7 @@ export const Error: Story = {
           error: 'Failed to load characters',
           searchQuery: '',
           setSearchQuery: () => {},
+          maxCharacters: 4,
         }}
       >
         <Story />
@@ -86,6 +89,7 @@ export const Empty: Story = {
           error: null,
           searchQuery: '',
           setSearchQuery: () => {},
+          maxCharacters: 4,
         }}
       >
         <Story />
