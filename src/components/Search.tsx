@@ -1,19 +1,15 @@
 'use client';
 
-import { useState, type ChangeEvent } from 'react';
+import { type ChangeEvent } from 'react';
 import { searchText } from '@/constants';
+import { useCharacters } from '@/context/CharacterContext';
 
-interface SearchProps {
-  onSearch?: (query: string) => void;
-}
-
-const Search = ({ onSearch }: SearchProps) => {
-  const [searchQuery, setSearchQuery] = useState<string>('');
+const Search = () => {
+  const { searchQuery, setSearchQuery } = useCharacters();
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchQuery(value);
-    onSearch?.(value);
   };
 
   return (

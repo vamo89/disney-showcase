@@ -4,7 +4,7 @@ import CharacterCard from './CharacterCard';
 import { useCharacters } from '@/context/CharacterContext';
 
 const CharacterList = () => {
-  const { characters, isLoading, error } = useCharacters();
+  const { characters, isLoading, error, searchQuery } = useCharacters();
 
   if (isLoading) {
     return <div className="text-center py-8">Loading...</div>;
@@ -20,6 +20,11 @@ const CharacterList = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {searchQuery && (
+        <h1 className="text-2xl mb-4 text-center">
+          Search Results: {searchQuery}
+        </h1>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
         {characters.map((character) => (
           <CharacterCard key={character._id} character={character} />
