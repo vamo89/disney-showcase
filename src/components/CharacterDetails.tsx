@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { type Character } from '@/types';
 import Button from './Button';
+import { CHARACTER_DETAILS } from '@/constants';
 
 interface CharacterDetailsProps {
   character: Character;
@@ -26,7 +27,7 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
         <div>
           <h1 className="text-3xl font-bold text-gray-900">{character.name}</h1>
           <p className="text-sm text-gray-500 mt-1">
-            Last updated:{' '}
+            {CHARACTER_DETAILS.LAST_UPDATED}{' '}
             {new Date(character.updatedAt).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -37,7 +38,9 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 
         {character.films?.length > 0 && (
           <div>
-            <h2 className="text-xl font-semibold mb-2">Featured Films</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              {CHARACTER_DETAILS.FEATURED_FILMS}
+            </h2>
             <ul className="list-disc list-inside space-y-1">
               {character.films.map((film, index) => (
                 <li key={index} className="text-gray-700">
@@ -50,7 +53,9 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 
         {character.shortFilms?.length > 0 && (
           <div>
-            <h2 className="text-xl font-semibold mb-2">Short Films</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              {CHARACTER_DETAILS.SHORT_FILMS}
+            </h2>
             <ul className="list-disc list-inside space-y-1">
               {character.shortFilms.map((film, index) => (
                 <li key={index} className="text-gray-700">
@@ -63,7 +68,9 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 
         {character.tvShows?.length > 0 && (
           <div>
-            <h2 className="text-xl font-semibold mb-2">TV Shows</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              {CHARACTER_DETAILS.TV_SHOWS}
+            </h2>
             <ul className="list-disc list-inside space-y-1">
               {character.tvShows.map((show, index) => (
                 <li key={index} className="text-gray-700">
@@ -83,7 +90,7 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
               window.open(character.sourceUrl, '_blank');
             }}
           >
-            Explore more character details
+            {CHARACTER_DETAILS.EXPLORE_BUTTON}
           </Button>
         )}
       </div>

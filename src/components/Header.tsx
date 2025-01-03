@@ -6,6 +6,7 @@ import DisneyLogo from '@/images/logo.png';
 import Profile from '@/images/avatar.png';
 import Search from './Search';
 import { useRouter } from 'next/navigation';
+import { HEADER } from '@/constants';
 
 interface HeaderProps {
   withSearch?: boolean;
@@ -22,7 +23,7 @@ const Header = ({ withSearch = false }: HeaderProps) => {
             <Link
               href="/"
               className="flex items-center gap-2"
-              aria-label="Go to homepage"
+              aria-label={HEADER.HOME_LINK_LABEL}
               tabIndex={0}
             >
               <Image src={DisneyLogo} alt="Disney Logo" height={40} priority />

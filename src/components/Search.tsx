@@ -1,7 +1,7 @@
 'use client';
 
 import { type ChangeEvent } from 'react';
-import { searchText } from '@/constants';
+import { SEARCH } from '@/constants';
 import { useCharacters } from '@/context/CharacterContext';
 
 const Search = () => {
@@ -18,10 +18,10 @@ const Search = () => {
         type="search"
         value={searchQuery}
         onChange={handleSearchChange}
-        placeholder={searchText.placeholder}
+        placeholder={SEARCH.PLACEHOLDER}
         className="w-full rounded-full border border-gray-200 py-2 px-4 text-sm bg-gray-100
                  focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-        aria-label={searchText.ariaLabel}
+        aria-label={SEARCH.LABEL}
         role="searchbox"
       />
     </div>

@@ -1,5 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
+import { BUTTON } from '@/constants';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary';
@@ -25,7 +26,7 @@ const Button = ({
         className,
       )}
       {...props}
-      aria-label={props['aria-label'] || 'Button'}
+      aria-label={props['aria-label'] || BUTTON.DEFAULT_ARIA_LABEL}
       tabIndex={0}
     >
       {children}

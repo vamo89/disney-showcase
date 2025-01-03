@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from './Button';
 import { type UserProfile, type UserProfileFormData } from '@/types/user';
+import { USER_PROFILE } from '@/constants';
 
 interface UserProfileProps {
   profile: UserProfile;
@@ -70,34 +71,43 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             {profile.firstName} {profile.lastName}
           </h1>
           <p className="text-sm text-gray-500">
-            Last Updated {new Date(profile.updatedAt).toLocaleDateString()}
+            {USER_PROFILE.VIEW.LAST_UPDATED}{' '}
+            {new Date(profile.updatedAt).toLocaleDateString()}
           </p>
         </div>
 
         <div className="space-y-4">
           <p className="text-gray-700">
-            <span className="font-semibold">Age:</span>{' '}
+            <span className="font-semibold">{USER_PROFILE.VIEW.AGE}</span>{' '}
             {new Date().getFullYear() -
               new Date(profile.birthDate).getFullYear()}
           </p>
           <p className="text-gray-700">
-            <span className="font-semibold">Location:</span> {profile.city},{' '}
-            {profile.state}
+            <span className="font-semibold">{USER_PROFILE.VIEW.LOCATION}</span>{' '}
+            {profile.city}, {profile.state}
           </p>
           <p className="text-gray-700">
-            <span className="font-semibold">Favorite Character:</span>{' '}
+            <span className="font-semibold">
+              {USER_PROFILE.VIEW.FAVORITE_CHARACTER}
+            </span>{' '}
             {profile.favoriteCharacter}
           </p>
           <p className="text-gray-700">
-            <span className="font-semibold">Favorite Ride:</span>{' '}
+            <span className="font-semibold">
+              {USER_PROFILE.VIEW.FAVORITE_RIDE}
+            </span>{' '}
             {profile.favoriteRide}
           </p>
           <p className="text-gray-700">
-            <span className="font-semibold">Favorite Movie:</span>{' '}
+            <span className="font-semibold">
+              {USER_PROFILE.VIEW.FAVORITE_MOVIE}
+            </span>{' '}
             {profile.favoriteMovie}
           </p>
           <p className="text-gray-700">
-            <span className="font-semibold">Favorite Disney Theme Park:</span>{' '}
+            <span className="font-semibold">
+              {USER_PROFILE.VIEW.FAVORITE_THEME_PARK}
+            </span>{' '}
             {profile.favoriteThemePark}
           </p>
         </div>
@@ -108,7 +118,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
           aria-label="Edit profile"
           className="mt-6"
         >
-          Edit Profile
+          {USER_PROFILE.EDIT_PROFILE}
         </Button>
       </div>
     );
@@ -125,7 +135,8 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="firstName"
             className="block text-sm font-medium text-gray-700"
           >
-            First Name <span className="text-red-500">*</span>
+            {USER_PROFILE.FORM.FIRST_NAME.LABEL}{' '}
+            <span className="text-red-500">{USER_PROFILE.REQUIRED}</span>
           </label>
           <input
             type="text"
@@ -144,7 +155,8 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="lastName"
             className="block text-sm font-medium text-gray-700"
           >
-            Last Name <span className="text-red-500">*</span>
+            {USER_PROFILE.FORM.LAST_NAME.LABEL}{' '}
+            <span className="text-red-500">{USER_PROFILE.REQUIRED}</span>
           </label>
           <input
             type="text"
@@ -163,7 +175,8 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="birthDate"
             className="block text-sm font-medium text-gray-700"
           >
-            Birth Date <span className="text-red-500">*</span>
+            {USER_PROFILE.FORM.BIRTH_DATE.LABEL}{' '}
+            <span className="text-red-500">{USER_PROFILE.REQUIRED}</span>
           </label>
           <input
             type="date"
@@ -182,7 +195,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="city"
             className="block text-sm font-medium text-gray-700"
           >
-            City
+            {USER_PROFILE.FORM.CITY.LABEL}
           </label>
           <input
             type="text"
@@ -198,7 +211,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="state"
             className="block text-sm font-medium text-gray-700"
           >
-            State
+            {USER_PROFILE.FORM.STATE.LABEL}
           </label>
           <select
             id="state"
@@ -208,7 +221,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
               setFormData({ ...formData, state: e.target.value })
             }
           >
-            <option value="">Select a state</option>
+            <option value="">{USER_PROFILE.FORM.STATE.PLACEHOLDER}</option>
             {US_STATES.map((state) => (
               <option key={state} value={state}>
                 {state}
@@ -222,7 +235,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="favoriteCharacter"
             className="block text-sm font-medium text-gray-700"
           >
-            Favorite Character
+            {USER_PROFILE.FORM.FAVORITE_CHARACTER.LABEL}
           </label>
           <input
             type="text"
@@ -240,7 +253,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="favoriteRide"
             className="block text-sm font-medium text-gray-700"
           >
-            Favorite Ride
+            {USER_PROFILE.FORM.FAVORITE_RIDE.LABEL}
           </label>
           <input
             type="text"
@@ -258,7 +271,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="favoriteMovie"
             className="block text-sm font-medium text-gray-700"
           >
-            Favorite Movie
+            {USER_PROFILE.FORM.FAVORITE_MOVIE.LABEL}
           </label>
           <input
             type="text"
@@ -276,7 +289,7 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
             htmlFor="favoriteThemePark"
             className="block text-sm font-medium text-gray-700"
           >
-            Favorite Disney Theme Park
+            {USER_PROFILE.FORM.FAVORITE_THEME_PARK.LABEL}
           </label>
           <select
             id="favoriteThemePark"
@@ -286,7 +299,9 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
               setFormData({ ...formData, favoriteThemePark: e.target.value })
             }
           >
-            <option value="">Select a theme park</option>
+            <option value="">
+              {USER_PROFILE.FORM.FAVORITE_THEME_PARK.PLACEHOLDER}
+            </option>
             {THEME_PARKS.map((park) => (
               <option key={park} value={park}>
                 {park}
@@ -298,10 +313,10 @@ const UserProfile = ({ profile, onUpdate }: UserProfileProps) => {
 
       <div className="mt-6 flex gap-4">
         <Button type="submit" variant="primary">
-          Update Profile
+          {USER_PROFILE.UPDATE_PROFILE}
         </Button>
         <Button type="button" variant="secondary" onClick={handleCancel}>
-          Cancel
+          {USER_PROFILE.CANCEL}
         </Button>
       </div>
     </form>

@@ -4,6 +4,7 @@ import { type Character } from '@/types';
 import missingImage from '@/images/missing-image.png';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { CHARACTER_CARD } from '@/constants';
 
 interface CharacterCardProps {
   character: Character;
@@ -38,7 +39,9 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
 
         {character.films.length > 0 ? (
           <div className="flex flex-col items-center">
-            <span className="text-sm font-medium">Featured Films</span>
+            <span className="text-sm font-medium">
+              {CHARACTER_CARD.FEATURED_FILMS}
+            </span>
             <div className="text-xs line-clamp-2 text-center text-gray-600">
               {character.films.join(', ')}
             </div>
@@ -46,7 +49,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
         ) : (
           <div className="text-center">
             <span className="text-sm text-gray-600">
-              No Films, check profile page for more information
+              {CHARACTER_CARD.NO_FILMS}
             </span>
           </div>
         )}
@@ -56,7 +59,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
           className="mt-auto pb-4 block text-center text-sm font-medium text-black underline hover:text-black/80 capitalize"
           aria-label={`View ${character.name}'s profile`}
         >
-          View Profile
+          {CHARACTER_CARD.VIEW_PROFILE}
         </Link>
       </div>
     </div>
