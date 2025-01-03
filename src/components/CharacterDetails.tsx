@@ -9,7 +9,7 @@ interface CharacterDetailsProps {
 
 const CharacterDetails = ({ character }: CharacterDetailsProps) => {
   return (
-    <div className="flex gap-8 p-6 mx-auto">
+    <div className="flex flex-col md:flex-row gap-8 p-6 mx-auto">
       {character.imageUrl && (
         <div className="relative w-full md:w-[400px] h-[500px] shrink-0">
           <Image
