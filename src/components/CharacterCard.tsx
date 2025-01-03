@@ -18,7 +18,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
   }, [imageSrc]);
 
   return (
-    <div className="w-full max-w-[250px] h-[400px] overflow-hidden rounded-lg shadow-lg">
+    <div className="w-full min-w-[200px] max-w-[250px] h-[400px] overflow-hidden rounded-lg shadow-lg">
       <div className="relative h-[250px] w-[250px]">
         <Image
           src={error ? missingImage : imageSrc}
@@ -46,7 +46,7 @@ const CharacterCard = ({ character }: CharacterCardProps) => {
         ) : (
           <div className="text-center">
             <span className="text-sm text-gray-600">
-              No Films, but check they profile page for more information
+              No Films, check profile page for more information
             </span>
           </div>
         )}
