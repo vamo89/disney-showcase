@@ -20,7 +20,13 @@ export const CharacterContext = createContext<CharacterContextType | undefined>(
   undefined,
 );
 
-export const CharacterProvider = ({ children }: { children: ReactNode }) => {
+export const CharacterProvider = ({
+  children,
+  featuredCharacters,
+}: {
+  children: ReactNode;
+  featuredCharacters?: boolean;
+}) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +36,15 @@ export const CharacterProvider = ({ children }: { children: ReactNode }) => {
       try {
         setIsLoading(true);
         const response = await getCharacters(1);
-        setCharacters(response.data.slice(0, 8));
+        if (featuredCharacters) {
+          setCharacters(
+            response.data
+              .filter((character) => character.tvShows.length > 0)
+              .slice(0, 4),
+          );
+        } else {
+          setCharacters(response.data.slice(0, 8));
+        }
       } catch (error) {
         setError('Failed to load characters');
         console.error('Error fetching characters:', error);
