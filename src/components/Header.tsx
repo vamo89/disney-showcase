@@ -1,14 +1,19 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import DisneyLogo from '@/images/logo.png';
 import Profile from '@/images/avatar.png';
 import Search from './Search';
+import { useRouter } from 'next/navigation';
 
 interface HeaderProps {
   withSearch?: boolean;
 }
 
 const Header = ({ withSearch = false }: HeaderProps) => {
+  const router = useRouter();
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-sm ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +30,17 @@ const Header = ({ withSearch = false }: HeaderProps) => {
           </div>
           {withSearch && <Search />}
 
-          <Image src={Profile} alt="Profile" width={40} height={40} priority />
+          <Image
+            src={Profile}
+            alt="Profile"
+            width={40}
+            height={40}
+            priority
+            onClick={() => {
+              router.push('/profile');
+            }}
+            className="cursor-pointer"
+          />
         </div>
       </div>
     </header>
